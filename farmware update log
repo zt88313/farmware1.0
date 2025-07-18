@@ -1,0 +1,102 @@
+Farmware log
+
+v0.1 simple sqlite setup
+
+v0.12 add 1 more testing table, spinner choose table to show, add ‘add new’ button, UI update
+
+V0.13 add new button works, and datacard buttons UI bug fixed
+
+v0.14 – Dynamic "Add New" Form with Multi-table Insert Support,
+Implemented AdddataFormFragment that builds its input form dynamically from table schema, 
+Added RecyclerView-based editable field list with real-time value tracking,
+Connected “Add” button to perform real insert into Room database (FarmEntity, WarehouseEntity),
+Integrated with PrefsManager to insert into correct table based on spinner selection,
+Verified full cycle: switch table → open form → insert → see result reflected in list view.
+
+v0.15 – Delete feature and table state fix
+Added delete function for Farm and Warehouse items using Room
+RecyclerView refreshes correctly after deletion
+Spinner now restores selected table using saved preference
+Introduced enum class for safer table name handling
+Improved overall table switching logic to support future expansion
+
+v0.16 – Edit Feature & Feedback Page
+Added edit support for Farm and Warehouse tables.
+Edit form loads data using item ID and updates it with Room @Update.
+Fixed RecyclerView bug by using real database ID instead of list index.
+Prevented editing of ID field.
+Refactored edit fragment with helper functions for cleaner code.
+Added new FeedbackFragment with messages from enum.
+Special layout for contact info with copy email button.
+Only email is copied (not full sentence).
+All feedback messages are selectable.
+Styled to match rest of app.
+
+v0.17 – Login, Farm & Warehouse FK Integration
+Added full login system with "Remember Me" and shared preferences support
+Linked FarmEntity to UserEntity via userId foreign key
+Linked WarehouseEntity to FarmEntity via farmId foreign key
+Insert, edit, and update logic now includes FK assignment and validation
+Added test data insert functions for farm and warehouse with FK awareness
+Refactored insert/update logic into helper functions for cleaner fragments
+reinstalled to avoid room version crashes
+
+
+
+v0.18 Update Log
+
+Renamed entity fields to match schema (userId, farmId, warehouseId, etc.)
+Updated DAOs with getAll(), getUserByUsername(), and other queries
+Bumped database version to 2 and enabled destructive migrations
+Refactored TableType and getFieldsForTable() for new column keys
+Hidden “User” in the table spinner and updated browsing mappings
+Enhanced form adapter to show readable labels, hints, lock IDs, and enable scrolling
+Updated layouts with header image and styled buttons
+Add data form now hints farm_id, disables Submit if no farms, and validates inputs
+Edit form loads records in a coroutine, shows hints, locks invalid fields, and validates updates
+
+v0.1.9 – 2025-06-19
+
+New features and improvements:
+PrefsManager: added setNetworkState() and getNetworkState() to track online/offline mode
+Utils.kt: added navigateToLoginActivity() and navigateToFeedbackForm()
+Utils.kt: moved all existing navigation helpers (jumpToHomePage, jumpToDatabaseBrowsing, jumpToDataForm, navigateToAddDataForm) into one place
+Utils.kt: consolidated the FeedbackMessage enum alongside PrefsManager methods
+Added support for a new farming_field table (entity, DAO, UI)
+Bug fixes:
+In AdddataFormFragment, table names are now lowercased and spaces→underscores so multi-word tables (e.g. Farming Field) load correctly
+In DatabaseBrowsingActivity, restoreSpinnerSelection() now normalizes both saved key and options so your selected table stays selected after add/edit
+
+
+V0.23
+
+Most local db crud implemented
+Forgot password feature added
+Decrypt script developed
+
+
+V0.24
+
+Edit user profile implemented
+
+
+V0.25
+
+Edit user profile support picture
+Fix ui top bar issue in loginactivity
+Fix some logic issue
+
+
+V0.291
+
+Report 1(product status) implemented.
+
+
+V0.292
+
+Report 2, Report 3 implemented.
+
+
+V1.01
+
+News function implemented.
